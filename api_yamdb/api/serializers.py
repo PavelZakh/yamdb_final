@@ -1,7 +1,5 @@
 from rest_framework import serializers
-
-from reviews.models import (User, Review, Comment,
-                            Category, Genre, Title)
+from reviews.models import Category, Comment, Genre, Review, Title, User
 
 
 class EmailSerializer(serializers.Serializer):

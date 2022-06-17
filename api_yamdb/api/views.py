@@ -1,3 +1,4 @@
+from api_yamdb.settings import EMAIL_HOST_USER
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db import IntegrityError
@@ -11,13 +12,12 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from api_yamdb.settings import EMAIL_HOST_USER
 from reviews.filters import TitleFilter
 from reviews.models import Category, Comment, Genre, Review, Title, User
+
 from api.mixins import CreateListDestroyViewSet
-from api.permissions import (IsAdminOrReadOnly, IsAuthorOrIsStaffPermission,
-                             IsAdminOrSuperUser)
+from api.permissions import (IsAdminOrReadOnly, IsAdminOrSuperUser,
+                             IsAuthorOrIsStaffPermission)
 from api.serializers import (CategoriesSerializer, CommentsSerializer,
                              ConfirmationCodeSerializer, EmailSerializer,
                              GenresSerializer, ReviewsSerializer,
@@ -117,8 +117,7 @@ class CommentsViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         review_id = self.kwargs.get('review_id')
         review = get_object_or_404(Review, id=review_id)
-        queryset = Comment.objects.filter(review=review)
-        return queryset
+        return Comment.objects.filter(review=review)
 
     def perform_create(self, serializer):
         review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
