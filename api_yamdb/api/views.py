@@ -1,4 +1,3 @@
-from api_yamdb.settings import EMAIL_HOST_USER
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db import IntegrityError
@@ -15,6 +14,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from reviews.filters import TitleFilter
 from reviews.models import Category, Comment, Genre, Review, Title, User
 
+from api_yamdb.settings import EMAIL_HOST_USER
 from api.mixins import CreateListDestroyViewSet
 from api.permissions import (IsAdminOrReadOnly, IsAdminOrSuperUser,
                              IsAuthorOrIsStaffPermission)
