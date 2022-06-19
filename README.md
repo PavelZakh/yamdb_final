@@ -145,4 +145,4 @@ http://localhost/redoc/
 
 Захаров Павел Валерьевич
 Студент Яндекс.Практикума по python backend разработке
-Telegram - https://t.me/zkhrv_pash
+Telegram - @zkhrv_pash
